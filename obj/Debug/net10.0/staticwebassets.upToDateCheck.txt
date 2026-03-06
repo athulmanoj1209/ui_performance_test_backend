@@ -1,0 +1,14 @@
+wwwroot\uploads\Bhavesh Kumar.avif
+wwwroot\uploads\Fahd Al Mansoori.jpg
+wwwroot\uploads\David Lee.jpg
+wwwroot\Ibrahim Noor.webp
+wwwroot\uploads\Hiro Tanaka.avif
+wwwroot\uploads\Khalid Rahman.avif
+wwwroot\uploads\Mikhail Petrov.jpg
+wwwroot\uploads\Alice Johnson.jpg
+wwwroot\uploads\Chitra Singh.avif
+wwwroot\uploads\Emanuela Rossi.jpg
+wwwroot\uploads\Gita Patel.jpg
+wwwroot\uploads\Hiro Tanaka.jpg
+wwwroot\uploads\Jasmine Wong.avif
+wwwroot\uploads\Lina Torres.jpg
