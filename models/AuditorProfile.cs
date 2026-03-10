@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using performance_test.models;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 public class AuditorProfile
 {
@@ -22,4 +24,5 @@ public class AuditorProfile
     // FK (1:1) to AuditNode
     public int AuditNodeId { get; set; }
     public AuditNode AuditNode { get; set; } = default!;
+    public ICollection<AuditorServices> AuditorServices { get; set; } = new List<AuditorServices>();
 }

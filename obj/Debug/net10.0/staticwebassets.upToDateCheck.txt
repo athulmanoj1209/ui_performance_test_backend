@@ -1,7 +1,7 @@
 wwwroot\uploads\Bhavesh Kumar.avif
 wwwroot\uploads\Fahd Al Mansoori.jpg
 wwwroot\uploads\David Lee.jpg
-wwwroot\Ibrahim Noor.webp
+wwwroot\uploads\Ibrahim Noor.webp
 wwwroot\uploads\Hiro Tanaka.avif
 wwwroot\uploads\Khalid Rahman.avif
 wwwroot\uploads\Mikhail Petrov.jpg

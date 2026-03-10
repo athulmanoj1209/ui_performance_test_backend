@@ -17,14 +17,14 @@ namespace performance_test.Controllers
 
 
         [HttpGet("audit-tree")]
-        public async Task<ActionResult<List<TreeNodeDto>>> GetAuditTree()
+        public async Task<ActionResult<List<SuccessOrErrorResponseDTO<TreeNodeDto>>>> GetAuditTree()
         {
             var result = await this._auditService.GetAuditTreeAsync();
             return Ok(result);
         }
 
         [HttpGet("get-auditor/{id}")]
-        public async Task<ActionResult<List<TreeNodeDto>>> GetAuditor(int id)
+        public async Task<ActionResult<List<TreeNodeDto>>> GetAuditor(string id)
         {
             var result = await this._auditService.GetAuditorByIdAsync(id);
             return Ok(result);

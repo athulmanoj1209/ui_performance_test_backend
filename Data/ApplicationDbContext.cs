@@ -33,5 +33,10 @@ public class ApplicationDbContext : DbContext
             .WithOne(a => a.AuditNode)
             .HasForeignKey<AuditorProfile>(a => a.AuditNodeId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<AuditorProfile>()
+            .HasMany(n => n.AuditorServices)
+            .WithMany(n => n.AuditorProfiles);
+
     }
 }
