@@ -2,11 +2,17 @@
   {
     "ContainingType": "performance_test.Controllers.AuditController",
     "Method": "GetAuditTree",
-    "RelativePath": "api/Audit/audit-tree",
+    "RelativePath": "api/Audit/audit-tree/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[performance_test.DTO.SuccessOrErrorResponseDTO\u00601[[performance_test.DTO.TreeNodeDto, performance_test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], performance_test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",

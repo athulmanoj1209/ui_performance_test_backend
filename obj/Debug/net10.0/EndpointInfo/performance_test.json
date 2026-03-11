@@ -5,10 +5,21 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Audit/audit-tree": {
+    "/api/Audit/audit-tree/{id}": {
       "get": {
         "tags": [
           "Audit"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -171,6 +182,34 @@
         },
         "additionalProperties": false
       },
+      "ToPrimeTreeDto": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/NodeDataDto"
+          },
+          "icon": {
+            "type": "string",
+            "nullable": true
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToPrimeTreeDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TreeNodeDto": {
         "type": "object",
         "properties": {
@@ -196,6 +235,13 @@
           },
           "data": {
             "$ref": "#/components/schemas/TreeNodeDto"
+          },
+          "primeData": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToPrimeTreeDto"
+            },
+            "nullable": true
           },
           "errorMessage": {
             "type": "string",

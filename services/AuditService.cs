@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using performance_test.DTO;
 
@@ -12,7 +13,7 @@ namespace performance_test.services
             _dbContext = dbContext;
         }
 
-        public async Task<SuccessOrErrorResponseDTO<List<TreeNodeDto>>> GetAuditTreeAsync()
+        public async Task<SuccessOrErrorResponseDTO<object>> GetAuditTreeAsync(int libraryId)
         {
             // 1) Load everything flat (one DB call)
             try
@@ -141,16 +142,34 @@ namespace performance_test.services
                 //Optional: remove empty children lists(to match your sample exactly)
                 RemoveEmptyChildren(roots);
 
-                return new SuccessOrErrorResponseDTO<List<TreeNodeDto>>
-                {
-                    StatusCode = 200,
-                    Data = roots,
-                };
+                //toPrimeTree(roots, "0");
+
+                if (libraryId == 1) {
+                    return new SuccessOrErrorResponseDTO<object>
+                    {
+                        StatusCode = 200,
+                        Data = roots,
+                    };
+                }
+                else if (libraryId == 2) {
+                    return new SuccessOrErrorResponseDTO<object>
+                    {
+                        StatusCode = 200,
+                        PrimeData = toPrimeTree(roots, "0"),
+                    };
+                }
+                else {
+                    return new SuccessOrErrorResponseDTO<object>
+                    {
+                        StatusCode = 200,
+                        Data = roots,
+                    };
+                }
 
             }
             catch (Exception ex)
             {
-                return new SuccessOrErrorResponseDTO<List<TreeNodeDto>>
+                return new SuccessOrErrorResponseDTO<Object>
                 {
                     StatusCode = 500,
                     ErrorMessage = ex.Message,
@@ -226,5 +245,31 @@ namespace performance_test.services
                 }
             }
         }
+
+        private static List<ToPrimeTreeDto> toPrimeTree(List<TreeNodeDto> nodes, string prefix = "0")
+        {
+            var result = new List<ToPrimeTreeDto>();
+            int i = 0;
+
+            foreach (var node in nodes)
+            {
+                string key = $"{prefix}-{i}";
+                result.Add(new ToPrimeTreeDto
+                {
+                    Key = key,
+                    label = node.Data.Name,
+                    data = node.Data,
+                    icon = null,
+                    children = node.Children != null && node.Children.Any()
+                ? toPrimeTree(node.Children, key)
+                : null
+                });
+
+                i++;
+            }
+
+            return result;
+        }
+
     }
 }

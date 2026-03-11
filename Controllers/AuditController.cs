@@ -16,10 +16,10 @@ namespace performance_test.Controllers
         }
 
 
-        [HttpGet("audit-tree")]
-        public async Task<ActionResult<List<SuccessOrErrorResponseDTO<TreeNodeDto>>>> GetAuditTree()
+        [HttpGet("audit-tree/{id}")]
+        public async Task<ActionResult<List<SuccessOrErrorResponseDTO<TreeNodeDto>>>> GetAuditTree(int id)
         {
-            var result = await this._auditService.GetAuditTreeAsync();
+            var result = await this._auditService.GetAuditTreeAsync(id);
             return Ok(result);
         }
 
